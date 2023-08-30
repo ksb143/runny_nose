@@ -1,4 +1,4 @@
-# "'runny_nose', a train running with my sisters. Don't worry. We can do it."
+# "'runny_nose', a train running with my sisters. Don't worry."
 
 # GOAL
 
