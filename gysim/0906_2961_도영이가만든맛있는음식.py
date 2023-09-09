@@ -4,7 +4,7 @@ def solve(idx):
     if idx == N:
         sour = 1
         bitter = 0
-        cnt = 0
+        cnt = 0  # 공집합 제외하기 위한 변수
         for i in range(N):
             if used[i]:
                 sour *= ingredient[i][0]
@@ -23,6 +23,13 @@ def solve(idx):
     solve(idx+1)
 
 
+# 신맛은 곱, 쓴맛은 합이다
+# 신맛과 쓴맛의 차이 최소값 출력
+# 재료는 적어도 하나 사용해야한다 -> 공집합 제외
+
+# 1. 공집합을 제외한 모든 부분집합 만들기
+# 2. 반복문 돌리기
+
 N = int(input())    # N개의 재료
 # 각 재료의 신맛 S, 쓴맛 B
 ingredient = [list(map(int, input().split())) for _ in range(N)]
@@ -35,9 +42,3 @@ solve(0)
 
 print(min_v)
 
-# 신맛의 곱, 쓴맛은 합이다
-# 신맛과 쓴맛의 차이 최소값 출력
-# 재료는 적어도 하나 사용해야한다
-
-# 1. 공집합을 제외한 모든 부분집합 만들기
-# 2. 반복문 돌리기

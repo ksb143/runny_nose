@@ -13,3 +13,4 @@ def hanoi(N, s, t, e):  # N: 원판개수, s:출발기둥, t:중간기둥, e:도
 
 print(2**N-1)
 hanoi(N, 1, 2, 3)
+

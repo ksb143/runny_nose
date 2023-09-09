@@ -15,8 +15,8 @@ for tc in range(1, T+1):
     # 중복 제거 -> 답을 리스트에 담아서 not in list이면 append 하기
     for i in range(N):
         tmp = ''
-        for j in range(i, i+N//4):
-            tmp += data[(j+1)%N]
+        for j in range(i, i + N//4):
+            tmp += data[(j + 1) % N]
 
         if tmp not in result:
             result.append(tmp)
