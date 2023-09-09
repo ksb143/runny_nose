@@ -9,7 +9,6 @@ def tail_to_head(data0,N,idx): # data: 원래정보, N: 회전 목표횟수
         result.append(data0)
         data1 = data0[-1] + data0[:-1]
         tail_to_head(data1,N,idx+1)
-
 T= int(input())
 for tc in range(1,1+T):
     N,K = map(int,input().split()) # 20 14
