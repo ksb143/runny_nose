@@ -1,9 +1,11 @@
-1. git clone *주소
+1. Git 관련 유의사항
+	a. 공간은 총 4가지 이상: 로컬 피시 - staging - 로컬 레퍼지토리 - 리모트 레퍼지토리
+	b. 깃을 잘쓰면 좋아요
 
-2. git add .
+2. update 하는 방법
+	a. git pull : 리모트 레퍼지토리의 뉴버전을 로컬 레퍼지토리로 가져와서, 업글
+	b. git add . : 내가 로컬 피시에서 특정 내용을 변경후, staging 공간으로 변경사항을 옮김
+	c. git commit -m '하고싶은말' : 변경사항을 로컬 레퍼지토리에 적용함
+	d. git push origin 브랜치이름(main) : 변경사항이 적용된 버전을 리모트 레퍼지토리에 보내서, 업글
 
-3. git commit -m 'jwchoi'
-
-4. git push origin main
-
-5. git pull
+	
