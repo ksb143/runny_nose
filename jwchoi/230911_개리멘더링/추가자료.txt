@@ -1,0 +1,19 @@
+https://www.acmicpc.net/problem/17471
+https://veggie-garden.tistory.com/28
+https://gmlwjd9405.github.io/2018/08/13/data-structure-graph.html
+https://en.wikipedia.org/wiki/Graph_traversal
+
+[자료구조]
+
+- 백트랙킹: 완전탐색의 단점인 효율성 저하를 극복하기 위한 방안
+
+- 그래프 구현 시 2 가지 방식:  
+1. Adjecency Matrix(인접행렬)
+	A.M.: 2차원 배열(파이썬: 리스트로 구현)로 나타내는 방식
+2. Adjacent List(인접리스트)
+	A.L.:=> adj[i]: i번째 노드애 연결된 노드들을 원소로 갖는 리스트들의 배열
+
+-DFS: 스택/큐/디큐(+반복문) or 재귀로 구현, cf1) 완전탐색+조합+순열 ..
+	1) 앞으로 찾아가야할 노드 -> 계속 탐색하기
+	2) 이미 방문한 노드 -> 무시하고 넘어가기
+-BFS: 큐/디큐로 구현 (단,재귀x), cf1) 최단경로, 가중치..cf2)다익스트라, 플로이드와샬,0-1 BFS
