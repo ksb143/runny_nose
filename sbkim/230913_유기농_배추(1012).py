@@ -33,10 +33,10 @@ for tc in range(T):
         field[Y][X] = 1
     # 배추면 넣기
     check = []
-    earthworm = 0
+    earthworm = 0 
     for r in range(N):
         for c in range(M):
-           if field[r][c] == 1 and (r, c) not in check:
-               check.append((r, c))
-               earthworm += dfs(r, c)
+            if field[r][c] == 1 and (r, c) not in check:
+                check.append((r, c))
+                earthworm += dfs(r, c)
     print(earthworm)
