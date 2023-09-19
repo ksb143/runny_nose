@@ -1,13 +1,52 @@
-N = int(input())
+from collections import deque
+N = int(input()) # 5
 b = list(map(int,input().split()))
-# b에 적힌 숫자를 그냥 이용한후, 마지막에 원래번호로 바꿔주면 됨
+di = {
+    3: 1,
+    2: 2,
+    1: 3,
+    -3: 4,
+    -1: 5
+}
+# print('주어진배열: ',b)
+# 규칙1: 0번 인덱스 풍선을 가장먼저 터뜨린다
+# 규칙2: 풍선에 적힌 값(이후 '번호')만큼 이동한다(양:오른/음:왼)
+# 규칙3: 이동시 이미 터진 풍선은 제외한다
+b = deque(b)
+# print('덱으로변경: ',b)
+# 0번을 시작 인덱스로 설정한다
+
+idx = b[0] # 0번 풍선의 번호를.. 새롭게 idx에 저장한다.!!!
+result = di[idx]
+print(result,end=" ") # 3(정답 시작)
+
+b.popleft() # 터질 번호를 없앤다
+b.rotate(N-idx)
+# print(b) # deque([-3, -1, 2, 1])
+
+idx = b[0]
+result = di[idx]
+print(result,end=" ")
+
+b.popleft() # 터질 번호를 없앤다
+b.rotate(idx)
+# print(b) # deque([-1, 2, 1])
+
+idx = b[0]
+result = di[idx]
+print(result,end=" ")
+
+b.popleft()
+b.rotate(idx)
 # print(b)
-idx = 0
-pang = b.pop(idx) # 3
-print(pang,b) # 3, [2,1,-3,-1]
-idx = pang-1 # (1+)2 # 양수니깐 오른쪽 (1+)2칸감 * 양수일땐 idx = pang-1
-pang = b.pop(idx) # -3
-print(pang,b) # -3, [2,1,-1]
-idx = pang # -3 # 음수니깐 왼쪽 3칸 감
-pang = b.pop(idx) # -1
-print(pang,b)
+
+idx = b[0]
+result = di[idx]
+print(result,end=" ")
+
+b.popleft()
+b.rotate(idx)
+
+idx = b[0]
+result = di[idx]
+print(result,end=" ")
