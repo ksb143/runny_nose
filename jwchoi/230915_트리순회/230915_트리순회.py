@@ -1,40 +1,7 @@
-def int1(): return int(input())
-
-
-def strs(): return input().split()
-
-
-n = int1()
-xs = [strs() for _ in range(n)]
-
-
-def build_graph(xs):
-    d = {}
-    for root, L, R in xs:
-        L = None if L == '.' else L
-        R = None if R == '.' else R
-        d[root] = [L, R]
-    return d
-
-
-g = build_graph(xs)
-
-preorder_result = []
-inorder_result = []
-postorder_result = []
-
-
-def order_search(g, start='A'):
-    if start == None: return
-
-    preorder_result.append(start)
-    order_search(g, g[start][0])
-    inorder_result.append(start)
-    order_search(g, g[start][1])
-    postorder_result.append(start)
-
-
-order_search(g)
-
-for trace in [preorder_result, inorder_result, postorder_result]:
-    print(''.join(trace))
+# 트리순회 1. 딕셔너리로 풀기
+v = int(input())
+r_l_r = {}
+for _ in range(v):
+    root, left, right = input().split()
+    r_l_r[root]= [left, right]
+print(r_l_r)
