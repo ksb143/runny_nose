@@ -28,11 +28,11 @@ from collections import deque
 # deque.remove('K') # 맨앞에 오는 'K' 아이템을 제거함
 # print(deque)
 # --------------------------------
-test = [3,2,1,-3,-1]
-test = deque(test)
-test.rotate(-3)
-print(test) # deque([-3, -1, 3, 2, 1]).. 왼쪽으로 3번 돈 결과가 나옴
-test.rotate(3)
-print(test) # deque([3, 2, 1, -3, -1]).. 오른쪽으로 3번 돈 결과가 나옴
-test.clear()
-print(test)
+# test = [3,2,1,-3,-1]
+# test = deque(test)
+# test.rotate(-3)
+# print(test) # deque([-3, -1, 3, 2, 1]).. 왼쪽으로 3번 돈 결과가 나옴
+# test.rotate(3)
+# print(test) # deque([3, 2, 1, -3, -1]).. 오른쪽으로 3번 돈 결과가 나옴
+# test.clear()
+# print(test)
