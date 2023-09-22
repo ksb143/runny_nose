@@ -1,6 +1,10 @@
 # 유사한 느낌의 문제: 백준_유기농배추, 백준_미로탐색
 # 유사한 개념: BFS(너비우선검색)-> 큐/덱 쓰기
 from collections import deque
+delta_r = [-1,1,0,0]
+delta_c = [0,0,-1,1]
+
+
 def tomato_bfs(row,col,arr):
     unripe = 0
 
@@ -11,8 +15,6 @@ def tomato_bfs(row,col,arr):
     vi = [[0] * col for _ in range(row)]
 
     # delta로 상하좌우 탐색
-    delta_x = [-1,1,0,0]
-    delta_y = [0,0,-1,1]
 
     for i in range(row):
         for j in range(col):
@@ -34,23 +36,24 @@ def tomato_bfs(row,col,arr):
     # dq가 비어있지 않은 동안 반복
     while dq:
         # 현재 위치의 좌표를 cx,cy로 잡음(c:current)
-        cx,cy  = dq.popleft() # (3,5)
+        cr,cc  = dq.popleft() # (3,5)
         # 사방탐색
         for k in range(4):
             # new_x: 인접자리 x좌표, new_y: 인접자리 y좌표
-            new_x, new_y = cx + delta_x[k], cy + delta_y[k]
+            new_r, new_c = cr + delta_r[k], cc + delta_c[k]
             # 4방향으로, 2차원배열 범위내에서, 미방문한 자리 라면?
-            if 0<= new_x < col and 0<= new_y < row and vi[new_x][new_y] == 0:
+            if 0<= new_r < row and 0<= new_c < col and vi[new_r][new_c] == 0:
                 # 그리고 안익은 토마토 라면?
-                if arr[new_x][new_y]==0:
+                if arr[new_r][new_c]==0:
                     # 익은 토마토로 변하면서, 안익은 토마토 수가 1줄어든다
                     unripe -= 1
                     # 덱에, 그 안익은 토마토의 자리를 넣고, 다음에 탐색할 준비하기
-                    dq.append((new_x,new_y))
+                    dq.append((new_r, new_c))
                     # 곧 방문할 곳은 현재 방문한 곳의 값보다 1커지면 된다. (방문한 곳의 수)
-                    vi[new_x][new_y]= vi[cx][cy]+1
+                    vi[new_r][new_c]= vi[cr][cc]+1
+
     if unripe ==0:
-        return vi[cx][cy]-1
+        return vi[cr][cc]-1
     elif unripe !=0:
         return -1
 
