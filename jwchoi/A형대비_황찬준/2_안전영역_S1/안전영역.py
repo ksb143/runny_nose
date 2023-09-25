@@ -4,36 +4,47 @@
 # 물에 잠기지 않는 안전한 영역의 개수 중에서 최대인 경우는 5임을 알 수 있다.
 from collections import deque
 
-# delta로 상하좌우 탐색
-delta_r = [-1,1,0,0]
-delta_c = [0,0,-1,1]
-
-def bfs(N,DATA):
+def bfs(n,data):
+    # dr dc로 상하좌우 탐색
+    dr = [-1, 1, 0, 0]
+    dc = [0, 0, -1, 1]
     # 가야할곳의 좌표를 담는 빈덱 만들기
-    dq = deque()
+    dq = deque([])
     # visited 만들기.
-    vi = [[0] * N for _ in range(N)]
+    vi = [[0] * n for _ in range(n)]
+    ans = []
     # 순회하기
-    for r in range(N):
-        for c in range(N):
-            for k in range(10):
-                if DATA[r][c] > k:
-                    passs
-
-    # # dq가 비어있지 않은 동안 반복
-    # while dq:
-    #     # 현재 위치의 좌표를 cx,cy로 잡음(c:current)
-    #     cr,cc  = dq.popleft() # (3,5)
-    #     # 사방탐색
-    #     for k in range(4):
-    #         # new_x: 인접자리 x좌표, new_y: 인접자리 y좌표
-    #         new_r, new_c = cr + delta_r[k], cc + delta_c[k]
-    #         # 4방향으로, 2차원배열 범위내에서, 미방문한 자리 라면?
-    #         if 0<= new_r < row and 0<= new_c < col and vi[new_r][new_c] == 0:
-
-
+    for k in range(1,101):
+        for r in range(n):
+            for c in range(n):
+                if data[r][c] >= k: # 높이가 k 초과인 구역은 safe place이다
+                    vi[r][c]=1
+                else:
+                    vi[r][c]=0 # 높이가 k 이하인 구역은 safe place가 아니다
+        # print(k,vi)
+        ########### 초기화 ##########
+        vvi = [[0] * n for _ in range(n)]
+        cnt = 0
+        ########### 초기화 ##########
+        for r in range(n):
+            for c in range(n):
+                # 만약 미방문 safe place를 발견 한다면?
+                if vi[r][c]==1 and vvi[r][c]==0:
+                    cnt +=1
+                    dq.append((r,c))
+                    vvi[r][c] = 1
+                    while dq:
+                        rr,cc = dq.popleft()
+                        for d in range(4):
+                            nr,nc = rr + dr[d], cc + dc[d]
+                            if 0<= nr < n and 0<= nc <n and vi[nr][nc]==1 and vvi[nr][nc] == 0:
+                                vvi[nr][nc] = 1
+                                dq.append((nr,nc))
+        ans.append(cnt)
+    # print(ans)
+    final = max(ans)
+    return final
 # 인풋받기
-n = int(input())
-data = [list(map(int,input().split()))for _ in range(n)]
-print(n,data)
-# print(bfs(n,data))
+N = int(input())
+DATA = [list(map(int,input().split()))for _ in range(N)]
+print(bfs(N,DATA))
