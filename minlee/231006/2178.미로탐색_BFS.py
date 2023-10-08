@@ -5,8 +5,6 @@ N, M = map(int, input().split())
 miro = [list(map(int, input())) for _ in range(N)]
 # 1은 이동할 수 있다, 0은 이동할 수 없다
 # (0,0)에서 출발해서 (N-1,M-1)에 도착
-answer = []
-# 총 몇 칸 움직였는지 확인하기
 d = [[-1, 0], [1, 0], [0, -1], [0, 1]]
 # 이동범위
 visited = [[0]*M for _ in range(N)]
