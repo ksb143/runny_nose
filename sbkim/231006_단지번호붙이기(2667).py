@@ -20,9 +20,8 @@ def bfs(i, j):
 
 N = int(input())
 
-apartments = [[] for _ in range(N)]
-for i in range(N):
-    apartments[i] = list(map(int, input()))
+apartments = [list(map(int, input())) for _ in range(N)]
+
 
 cnt = 0     # 단지를 세는 변수
 complex_num = []        # 단지 내 집의 수를 넣는 리스트
