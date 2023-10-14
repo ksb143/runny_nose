@@ -1,5 +1,5 @@
 import sys
-sys.setrecursionlimit(10000000)
+sys.setrecursionlimit(100000)
 input = sys.stdin.readline
 
 def DFS(x, y):
@@ -31,13 +31,15 @@ part = 0
 # 분리되어 나누어지는 영역 개수
 d = [[-1, 0], [1, 0], [0, 1], [0, -1]]
 
+
 for i in range(M):
     for j in range(N):
         count = 0
         if not nemo[i][j]:
+            part += 1
             DFS(i, j)
             answer.append(count)
-            part += 1
+
 answer.sort()
 print(part)
 print(*answer)
