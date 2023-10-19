@@ -1,11 +1,13 @@
 def perm(idx, cnt):
 
+    # 이거 없으면 Index Out of Range
+    # 원하는 갯수만큼 못 뽑았는데 Index 넘어가면 탐색을 종료하렴
     if idx == N:
-        print(chosen)
         return
 
+    # 원하는 갯수만큼 뽑았다면 탐색을 종료하렴
     if cnt == pick_num:
-
+        print(chosen)
         return
 
     for el in range(N):
