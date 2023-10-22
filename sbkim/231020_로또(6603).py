@@ -17,7 +17,6 @@ def comb(idx, cnt, k, check):
     comb(idx+1, cnt, k, check)
 
 
-
 while True:
     S = list(map(int, input().split()))
     k = S.pop(0)
