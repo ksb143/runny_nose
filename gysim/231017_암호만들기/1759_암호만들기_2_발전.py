@@ -6,6 +6,8 @@ alphabets = input().split()
 # 알파벳을 증가하는 순서로 정렬
 alphabets.sort()
 
+# alphabets = sorted(input().split())
+
 # 암호는 최소 한개의 모음(a, e, i, o, u)과 최소 두개의 자음으로 구성
 # 가능성 있는 암호를 한줄에 하나씩 출력
 
@@ -27,7 +29,6 @@ def comb(i, cnt):
         if cnt_v >= 1 and L-cnt_v >= 2:
             # 문자열로 합치기
             print(''.join(selected))
-            pass
         return
 
     # L개만큼 못 골랐는데 배열의 끝까지 왔으면

@@ -14,6 +14,7 @@ alphabets.sort()
 
 # combinations(조합할 배열, 고를 개수) -> 반환값은 튜플 형태
 for passwords in combinations(alphabets, L):
+    # print(passwords)
     cnt = 0     # 모음의 개수
 
     # 튜플 안에 있는 글자가

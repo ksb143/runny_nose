@@ -18,6 +18,10 @@ def comb(i, cnt):
     # 고른 숫자가 암호의 길이와 같으면
     if cnt == L:
         # 최소 한개의 모음, 최소 두개의 자음인지 확인
+        # num_v =0
+        # for i in 'aeiou':
+        #     num_v += selected.count(i)
+            
         numa = selected.count('a')
         nume = selected.count('e')
         numi = selected.count('i')

@@ -17,9 +17,10 @@ def comb(N, M, visited, cnt):
     # M개를 골랐으면
     if cnt == M:
         # selected[i]에 있는 값을 출력
-        for i in range(M):
-            print(selected[i], end=' ')
-        print()
+        # for i in range(M):
+            # print(selected[i], end=' ')
+        print(*selected)
+        # print()
         return
 
     # 1부터 N까지 순회
