@@ -22,5 +22,3 @@ if p1 == p2:
 else:
     while asc1 != asc2:
         asc1 = reversed_graph[p1]
-
-
