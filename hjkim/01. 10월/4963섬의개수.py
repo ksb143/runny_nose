@@ -1,10 +1,18 @@
 from collections import deque
 # width, height 가 0 0 이면 입력이 끝임
 
-def dfs():
+
+# BFS 가 되어버린 DFS
+# for - else 구문으로 갈 데가 없으면
+# stack 에 들어 있는 걸 꺼내도록 해줘야
+# DFS 가 됨
+
+
+def dfs(start):
+    cr, cc = start
     # island : 갈 수 있는 곳을 담는 스택
     island = deque()
-    island.append((row,col))
+    island.append((cr, cc))
     # 가로 세로 대각선 - 걸어갈 수 있음
     # 8방향 (상, 우상, 우, 우하, 하, 좌하, 좌, 좌상)
     directions = [(-1,0),(-1,1),(0,1),(1,1),(1,0),(1,-1),(0,-1),(-1,-1)]
@@ -13,7 +21,7 @@ def dfs():
         visited[cr][cc] = 1
         for d in range(8):
             nr, nc = cr + directions[d][0], cc + directions[d][1]
-            if 0<= nr < height and 0<= nc < width:
+            if 0 <= nr < height and 0 <= nc < width:
                 if my_map[nr][nc] and not visited[nr][nc]:
                     island.append((nr,nc))
 
@@ -35,7 +43,8 @@ while True:
                     visited[row][col] = 1
                 # 땅이라면
                 else:
-                    dfs()
+                    start = (row, col)
+                    dfs(start)
                     # dfs 돌면서 갈 수 있는 곳 전부 가서 방문 체크해주기
                     cnt += 1
             # 방문 했으면 그냥 넘어가기

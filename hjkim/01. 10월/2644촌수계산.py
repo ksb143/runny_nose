@@ -1,5 +1,10 @@
 import collections
 
+# 해야 할 일 :
+# 자식을 인덱스로 놓고
+# 부모를 그거에 딸린 리스트로 놓고..
+# 하면 된다..
+
 total_human = int(input())
 start, end = map(int, input().split())
 edges = int(input())
