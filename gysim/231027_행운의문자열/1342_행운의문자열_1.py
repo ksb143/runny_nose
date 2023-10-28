@@ -40,3 +40,18 @@ comb(0, '')
 
 # 서로 다른 행운의 문자열 개수 출력
 print(len(result))
+
+
+# 참고 ############################################
+# from itertools import permutations
+
+# S = input()
+# N = len(S)
+# result = set()
+
+# for permuted in set(permutations(S, N)):
+#     is_lucky = all(permuted[i] != permuted[i + 1] for i in range(N - 1))
+#     if is_lucky:
+#         result.add(permuted)
+
+# print(len(result))
