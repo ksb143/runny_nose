@@ -9,32 +9,18 @@ from collections import defaultdict
 S = input()
 n = len(S)
 
-lucky_lst = [0] * n
-
 cnt = 0
 word_dic = defaultdict(int)
 for s in S:
     word_dic[s] += 1
 
-def perm(idx, S, n, lucky_lst, word_dic):
+
+def perm(idx, n, lucky_word, word_dic):
     global cnt
     if idx == n:
         cnt += 1
-    for i in range(n):
-        # 첫 번째가 아니고 앞에 이미 배치해놓은 문자열과 똑같으면 continue
-        if idx > 0 and S[i] == lucky_lst[idx-1]:
-            continue
-        # 다 사용했으면 continue
-        if not word_dic[S[i]]:
-            continue
-        # 사용했으니까 개수 줄이기
-        word_dic[S[i]] -= 1
-        # lucky 배열에 넣기
-        lucky_lst[idx] = S[i]
-        # 재귀
-        perm(idx+1, S, n, lucky_lst, word_dic)
-        # 초기화
-        word_dic[S[i]] += 1
+        return
+
 
 
 perm(0, S, n, lucky_lst, word_dic)

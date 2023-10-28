@@ -11,7 +11,7 @@ for color in colors:
     color -= 1
     n -= 1
     for i in range(K-1):
-        color_per *= color/ n
+        color_per *= color/n
         color -= 1
         n -= 1
     per += color_per
