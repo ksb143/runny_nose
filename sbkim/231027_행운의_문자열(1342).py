@@ -5,25 +5,35 @@
 # 첫째 줄에 문자열 S가 주어진다. S의 길이는 최대 10이고, 알파벳 소문자로만 이루어져 있다.
 from collections import defaultdict
 
-
 S = input()
 n = len(S)
 
+lucky_word = [0] * n
+
 cnt = 0
-word_dic = defaultdict(int)
+word_dict = defaultdict(int)
 for s in S:
-    word_dic[s] += 1
+    word_dict[s] += 1
 
 
-def perm(idx, n, lucky_word, word_dic):
+def perm(idx, n, word_dict, lucky_word):
     global cnt
     if idx == n:
         cnt += 1
         return
 
+    for key in word_dict.keys():
+        if word_dict[key] == 0 or (idx > 0 and key == lucky_word[idx-1]):
+            continue
+        # 해당 알파벳 사용
+        word_dict[key] -= 1
+        lucky_word[idx] = key
+        # 재귀
+        perm(idx+1, n, word_dict, lucky_word)
+        # 해당 알파벳 되돌리기
+        word_dict[key] += 1
 
 
-perm(0, S, n, lucky_lst, word_dic)
-
+perm(0, n, word_dict, lucky_word)
 
 print(cnt)
