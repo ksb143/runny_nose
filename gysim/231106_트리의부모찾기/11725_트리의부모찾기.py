@@ -17,7 +17,7 @@ parents = [0]*(N+1)
 def dfs(start, parent):
 
     for node in tree[start]:
-        if node != parent:
+        if node != parent and not parents[node]:
             parents[node] = start
             dfs(node, start)
 
