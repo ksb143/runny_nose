@@ -3,6 +3,7 @@
 from collections import defaultdict
 import sys
 sys.setrecursionlimit(10**6)
+input = sys.stdin.readline
 
 N = int(input())    # 노드의 개수
 tree = defaultdict(list)
