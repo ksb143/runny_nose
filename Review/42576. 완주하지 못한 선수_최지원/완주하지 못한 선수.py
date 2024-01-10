@@ -9,7 +9,7 @@ def solution(participant, completion):
 
 # # 아래는 이해를 위한 예시
 # from collections import Counter
-#
+
 # # Counter 객체 생성
 # c = Counter(["apple", "banana", "apple", "cherry", "banana"])
 # print(c)
