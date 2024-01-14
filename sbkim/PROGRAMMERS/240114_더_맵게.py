@@ -14,35 +14,35 @@
 # scoville의 원소는 각각 0 이상 1,000,000 이하입니다.
 # 모든 음식의 스코빌 지수를 K 이상으로 만들 수 없는 경우에는 -1을 return 합니다.
 
-# 실패
-# def solution(scovilles, K):
-#     # 만들 수 없는 경우
-#     cnt = 0
-#     while True:
-#         # 스코빌 지수를 K이상으로 만들 수 있는 경우
-#         if len(scovilles) > 0:
-#             # 스코빌 지수 정렬
-#             scovilles.sort()
-#
-#             # 맵지 않은 음식 꺼내기
-#             food1 = scovilles.pop(0)
-#             food2 = scovilles.pop(0)
-#
-#             # 맵지 않은 음식 강화
-#             if food1 < K and food2 < K:
-#                 new_scovilles = (food1 + food2 * 2)
-#                 scovilles.append(new_scovilles)
-#                 cnt += 1
-#             # 모든 음식이 스코빌 지수 K를 넘은 경우
-#             else:
-#                 break
-#         # 스코빌 지수를 K 이상으로 만들 수 없는 경우 (음식 하나만 남음)
-#         else:
-#             cnt = -1
-#             break
-#
-#     answer = cnt
-#     return answer
+# 실패 -> 시간 초과
+def solution(scovilles, K):
+    # 만들 수 없는 경우
+    cnt = 0
+    while len(scovilles) >= 2:
+        # 스코빌 지수 정렬
+        scovilles.sort()
+
+        # 맵지 않은 음식 꺼내기
+        min_scov1 = scovilles.pop(0)
+
+        # 가장 맵지 않은 음식이 스코빌 지수 K 이상일 때
+        if min_scov1 >= K:
+            break
+        # 모든 음식이 스코빌 지수 K를 넘은 경우
+        else:
+            # 두 번째로 맵지 않은 음식 꺼내기
+            min_scov2 = scovilles.pop(0)
+            # 스코빌 지수 UP
+            new_scov = min_scov1 + (min_scov2 * 2)
+            scovilles.append(new_scov)
+            # 섞은 횟수 증가
+            cnt += 1
+    # 스코빌 지수를 K 이상으로 만들 수 없는 경우 (음식 하나만 남음)
+    else:
+        last = scovilles[0]
+        if last < K:
+            cnt = -1
+    return cnt
 
 
 # heaq 모듈 사용
@@ -64,6 +64,7 @@ def solution(scovilles, K):
         else:
             # 두 번재로 맵지 않은 음식 꺼내기
             min_scov2 = heapq.heappop(scovilles)
+            # 스코빌 지수 UP
             new_scov = min_scov1 + (min_scov2 * 2)
             heapq.heappush(scovilles, new_scov)
             # 섞었으니 횟수 상승
