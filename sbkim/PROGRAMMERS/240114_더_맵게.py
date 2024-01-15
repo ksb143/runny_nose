@@ -28,7 +28,7 @@ def solution(scovilles, K):
         # 가장 맵지 않은 음식이 스코빌 지수 K 이상일 때
         if min_scov1 >= K:
             break
-        # 모든 음식이 스코빌 지수 K를 넘은 경우
+        # 스코빌 지수 K를 넘지 않는 경우
         else:
             # 두 번째로 맵지 않은 음식 꺼내기
             min_scov2 = scovilles.pop(0)
@@ -62,7 +62,7 @@ def solution(scovilles, K):
         if min_scov1 >= K:
             break
         else:
-            # 두 번재로 맵지 않은 음식 꺼내기
+            # 두 번째로 맵지 않은 음식 꺼내기
             min_scov2 = heapq.heappop(scovilles)
             # 스코빌 지수 UP
             new_scov = min_scov1 + (min_scov2 * 2)
