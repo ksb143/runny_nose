@@ -1,16 +1,19 @@
-from heapq import heapify
+from heapq import heapify, heappop, heappush
+
 
 def solution(scoville, K):
     heapify(scoville)
     answer = 0
 
-    # 모든 음식의 스코빌 지수를 K 이상으로 만들기기
-    # 섞은 음식의 스코빌 지수 = 가장 맵지 않은 음식의 스코빌 지수 + (두 번째로 맵지 않은 음식의 스코빌 지수 * 2)
-    # 모든 음식의 스코빌 지수가 K 이상 될 때까지 섞기
-    while scoville[answer] > K: # 1. = 을 붙여야 하나?
-        pass
+    while scoville[0] < K:
+        if len(scoville) < 2:
+            return -1
 
-    return answer
+        new_scv = heappop(scoville) + heappop(scoville) * 2
+        heappush(scoville, new_scv)
+        answer += 1
 
-scoville = [3, 2, 1, 9, 12, 10]
-solution(scoville, 7)
+    if scoville[0] >= K:
+        return answer
+
+    return -1
