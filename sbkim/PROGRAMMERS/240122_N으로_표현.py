@@ -16,5 +16,31 @@
 
 
 def solution(N, number):
-    answer = 0
-    return answer
+
+    # 1 ~ 8개의 숫자를 사용해서 만들 수 있는 리스트 만들기 (최솟값 8개까지니까 8까지 만듦)
+    dp = [set() for _ in range(9)]
+
+    # 1, 11, 111, 1111와 같은 (기초 값 넣기)
+    for i in range(1, 9):
+        dp[i].add(int(str(N) * i))
+
+    # DP 프로그래밍 만들기
+    # i + j 더해서 쓰는 특정 숫자 개수로 만들 수 있는 조합 다 만들고
+    # 그것을 1부터 9까지 다 집어넣기
+    for i in range(1, 9):
+        for j in range(1, i):
+            for x in dp[j]:
+                for y in dp[i-j]:
+                    # 기존에 나왔던 것을 다 계산해보기
+                    # update는 세트에 있는 것을 한꺼번에 넣기
+                    dp[i].update({(x + y), (x - y), (x * y)})
+                    # 분모가 0인 경우 예외 처리
+                    if y != 0:
+                        dp[i].add(x // y)
+
+        # i개의 숫자를 이용해서 number를 만들 수 있으면 return i
+        if number in dp[i]:
+            return i
+
+    # 최소 값이 8보다 크면 -1 return
+    return -1
