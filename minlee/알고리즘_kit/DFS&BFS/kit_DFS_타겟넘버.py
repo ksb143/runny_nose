@@ -26,8 +26,19 @@ def solution(numbers, target):
 # 좋아서 남겨보는 남의 풀이
 def solution(numbers, target):
     if not numbers and target == 0:
+        # numbers에 아무것도 없다는 건 다 잘라낸 거니까
         return 1
     elif not numbers:
         return 0
     else:
         return solution(numbers[1:], target-numbers[0]) + solution(numbers[1:], target+numbers[0])
+
+# 내꺼랑 혼합한 수정 풀이
+def solution(numbers, target, index=0):
+    if index == len(numbers):
+        if target == 0:
+            return 1
+        else:
+            return 0
+    else:
+        return solution(numbers, target - numbers[index], index + 1) + solution(numbers, target + numbers[index], index + 1)
