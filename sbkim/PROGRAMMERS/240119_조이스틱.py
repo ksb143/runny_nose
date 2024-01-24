@@ -161,7 +161,9 @@ def solution4(name):
     cnt = 0
     for i in range(N):
         # 알파벳 이동 횟수
+        # A와 가까운지 Z와 가까운지 체크한다
         move_num = min((ord(name[i]) - 65), (91 - ord(name[i])))
+        # 조이스틱 움직인 횟수
         cnt += move_num
         # 'A'가 아닐 경우 인덱스 집어넣기
         if move_num and i != 0:
@@ -170,6 +172,7 @@ def solution4(name):
     # 현재 위치 변수 (오른쪽으로 갈 것)
     right_position = 1
     right_cnt = 1
+    # deepcopy 만드는 방법
     right = idx_lst[:]
     while right:
         # 현재 위치 기준 거리를 집어 넣을 딕셔너리
