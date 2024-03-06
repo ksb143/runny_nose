@@ -48,4 +48,4 @@ def solution(numbers, target):
     return cnt
 
 
-solution([4, 1, 2, 1], 2)
+print(solution([4, 1, 2, 1], 2))
